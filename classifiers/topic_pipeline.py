@@ -8,7 +8,7 @@ from pathlib import Path
 
 environment = 'test'
 home = str(Path.home())
-project_folder = r'\parroty_workspace'
+project_folder = r'\_parroty_workspace'
 output_folder = home + project_folder
 pipeline_filename = output_folder + r'\parroty_pipeline.pickle'
 
