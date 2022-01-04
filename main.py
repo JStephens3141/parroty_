@@ -3,13 +3,14 @@ A general purpose classifier pipeline to classify tweet sentiment by 'News Topic
 """
 
 
-from datasources import tweets
+from datasources.tweets import TweetDump
+from classifiers.topic_pipeline import TopicPipeline
 
-tweet_data = tweets()
-
+tweet_data = TweetDump()
+pipeline = TopicPipeline()
 
 def main():
-    print('Hello')#tweet_data):
+    print(tweet_data, pipeline)
 # TODO: Streth Goal - Ask twitter a question/Generate a 'generalized' response
 
 # TODO: Scrape twitter for data
