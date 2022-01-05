@@ -22,8 +22,8 @@ class TopicPipeline():
         #Load dataset
         # TODO: add all categories
         self.categories = ['alt.atheism','soc.religion.christian','comp.graphics', 'sci.med']
-        self.twenty_train = fetch_20newsgroups(subset='train', shuffle=True, random_state=42)
-        self.test_data = fetch_20newsgroups(subset='test', shuffle=True, random_state=42)
+        self.twenty_train = fetch_20newsgroups(subset='train', shuffle=True, random_state=11)
+        self.test_data = fetch_20newsgroups(subset='test', shuffle=True, random_state=11)
 
         #pipeline cache
         # TODO: add check/creation step for self.project_folder
