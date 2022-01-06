@@ -19,8 +19,9 @@ class TweetDump():
 
     def create_url(self):
         # Replace with user ID below
-        user_id = 1037321378
-        return "https://api.twitter.com/2/users/{}/tweets".format(user_id)
+        usernames = 'usernames='#list, of, usernames'
+        user_fields = 'user.fields=description, created_at'
+        return "https://api.twitter.com/2/users/by/{}&{}".format(usernames, user_fields) #"https://api.twitter.com/2/users/{}/tweets".format(user_id)
 
     def get_params(self):
         # Tweet fields are adjustable.
@@ -38,7 +39,7 @@ class TweetDump():
         """
 
         r.headers["Authorization"] = f"Bearer {self.bearer_token}"
-        r.headers["User-Agent"] = "v2UserTweetsPython"
+        r.headers["User-Agent"] = "parroty_test"
         return r
 
 
@@ -51,6 +52,7 @@ class TweetDump():
                     response.status_code, response.text
                 )
             )
+        print(params)
         return response.json()
 
 if __name__ == '__main__':
