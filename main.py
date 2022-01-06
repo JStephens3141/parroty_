@@ -10,7 +10,7 @@ tweet_data = TweetDump()
 pipeline = TopicPipeline()
 
 def main():
-    ''
+    ''#print(tweet_data.df.tail())
 # TODO: Streth Goal - Ask twitter a question/Generate a 'generalized' response
 
 # TODO: Scrape twitter for data
