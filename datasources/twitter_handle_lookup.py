@@ -7,31 +7,21 @@ import json
 # To set your environment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 
-class TweetDump():
+class UserLookup():
 
     def __init__(self):
         self.bearer_token = 'AAAAAAAAAAAAAAAAAAAAAEk1RAEAAAAAzjosLGY5ZBoI2510JOg0eZqgPGA%3DTITTljCJgajS4IbV0sUKVysU8KggUUVMYAEgfbpxOATsQPKKYZ'#os.environ.get("BEARER_TOKEN")
         url = self.create_url()
-        params = self.get_params()
-        json_response = self.connect_to_endpoint(url, params)
+        json_response = self.connect_to_endpoint(url)
         self.df = pd.json_normalize(json_response)
 
 
     def create_url(self):
         # Replace with user ID below
-        usernames = 'usernames='#list, of, usernames'
-        user_fields = 'user.fields=description, created_at'
-        return "https://api.twitter.com/2/users/by/{}&{}".format(usernames, user_fields) #"https://api.twitter.com/2/users/{}/tweets".format(user_id)
+        usernames = 'usernames=SenatorBaldwin,SenJohnBarrasso'#list, of, usernames'
+        user_fields = 'user.fields=description,created_at'
+        return "https://api.twitter.com/2/users/by/?{}&{}".format(usernames, user_fields) #"https://api.twitter.com/2/users/{}/tweets".format(user_id)
 
-    def get_params(self):
-        # Tweet fields are adjustable.
-        # Options include:
-        # attachments, author_id, context_annotations,
-        # conversation_id, created_at, entities, geo, id,
-        # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
-        # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
-        # source, text, and withheld
-        return {"tweet.fields": "created_at", "max_results": "5"}#, "pagination_token": "7140dibdnow9c7btw3z3al3eejvt8zgiv6ko889o8zfhu", "max_results": "5"}
 
     def bearer_oauth(self, r):
         """
@@ -43,8 +33,9 @@ class TweetDump():
         return r
 
 
-    def connect_to_endpoint(self, url, params):
-        response = requests.request("GET", url, auth=self.bearer_oauth, params=params)
+    def connect_to_endpoint(self, url):
+        
+        response = requests.request("GET", url, auth=self.bearer_oauth)
         print('Response Status: ' + str(response.status_code))
         if response.status_code != 200:
             raise Exception(
@@ -52,8 +43,7 @@ class TweetDump():
                     response.status_code, response.text
                 )
             )
-        print(params)
         return response.json()
 
 if __name__ == '__main__':
-    dump = TweetDump()
+    dump = UserLookup()

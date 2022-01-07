@@ -19,7 +19,7 @@ class TweetDump():
 
     def create_url(self):
         # Replace with user ID below
-        user_id = 1037321378
+        user_id = 1074518754 #1074518754 Sen Tammy Baldwin, save user_lookup to a csv & cache
         return "https://api.twitter.com/2/users/{}/tweets".format(user_id)
 
     def get_params(self):
