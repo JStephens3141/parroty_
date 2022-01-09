@@ -23,6 +23,7 @@ class UserLookup():
         return "https://api.twitter.com/2/users/by/?{}&{}".format(usernames, user_fields) #"https://api.twitter.com/2/users/{}/tweets".format(user_id)
 
 
+    #Probably insecure, remove 'self' by passing bearer token as a param
     def bearer_oauth(self, r):
         """
         Method required by bearer token authentication.
