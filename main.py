@@ -7,9 +7,11 @@ from datasources.tweets import TweetDump
 from datasources.twitter_handle_lookup import UserLookup
 from classifiers.topic_pipeline import TopicPipeline
 
-docs = ['Tweeter Docs']
 tweet_data = TweetDump()#UserLookup()
 pipeline = TopicPipeline()
+docs = []#list(tweet_data.df['data'][0].values())#['Tweeter', 'Docs']
+for tweet in tweet_data.df['data'][0]:
+    docs.append(tweet['text'])
 predict = pipeline.text_clf.predict(docs)
 
 def main():
@@ -20,11 +22,9 @@ def main():
     for doc, category in zip(docs, predict):
         print('%r => %s' % (doc, pipeline.twenty_train.target_names[category]))
         
-    # TODO: Streth Goal - Ask twitter a question/Generate a 'generalized' response
-
-    # TODO: Scrape twitter for data
-    # TODO: Load data into classifier
-    # TODO: Visualize Data
+    # TODO: Stretch Goal - Ask twitter a question/Generate a 'generalized' response
+    # TODO: Analyze Data - Sentiment, Topic
+    # TODO: Visualize Analysis - Word blob by sentiment
 
 
 if __name__ == "__main__":
