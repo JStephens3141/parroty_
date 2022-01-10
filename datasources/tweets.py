@@ -30,7 +30,7 @@ class TweetDump():
         # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
         # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
         # source, text, and withheld
-        return {"tweet.fields": "created_at", "max_results": "5"}#, "pagination_token": "7140dibdnow9c7btw3z3al3eejvt8zgiv6ko889o8zfhu", "max_results": "5"}
+        return {"tweet.fields": "created_at", "max_results": "10"}#, "pagination_token": "7140dibdnow9c7btw3z3al3eejvt8zgiv6ko889o8zfhu", "max_results": "5"}
 
     def bearer_oauth(self, r):
         """
@@ -55,3 +55,12 @@ class TweetDump():
 
 if __name__ == '__main__':
     dump = TweetDump()
+    docs = []
+
+
+    for tweet in dump.df['data'][0]:
+        docs.append(tweet['text'])
+    print(docs)
+        #print(dump.df['data'][0][tweet]['text'])
+#    for tweet in dump.df['data'][0]:
+#        print(tweet['text'], '\n')
