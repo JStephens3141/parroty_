@@ -3,16 +3,20 @@ A general purpose classifier pipeline to predict tweet sentiment by 'Topic'
 """
 
 
-from datasources.tweets import TweetDump
-from datasources.twitter_handle_lookup import UserLookup
-from classifiers.topic_pipeline import TopicPipeline
+from src.datasources.twitter.tweets import TweetDump
+from src.datasources.twitter.twitter_handle_lookup import UserLookup
+from src.classifiers.topic_pipeline import TopicPipeline
 
 tweet_data = TweetDump()#UserLookup()
 pipeline = TopicPipeline()
+
+#docs is assembled in a for loop that iterates through each tweet scraped and places just the tweet text into a list
 docs = []#list(tweet_data.df['data'][0].values())#['Tweeter', 'Docs']
 for tweet in tweet_data.df['data'][0]:
     docs.append(tweet['text'])
 predict = pipeline.text_clf.predict(docs)
+
+analysis_data = {'text':[], 'category':[]}
 
 def main():
     print(predict[0])
