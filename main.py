@@ -17,7 +17,7 @@ for tweet in tweet_data.df['data'][0]:
 predict = pipeline.text_clf.predict(docs)
 analysis_data = {'tweet':[], 'category':[]}
 #analysis_data = {'tweet':[docs], 'category':pipeline.twenty_train.target_names[category]}
-
+#
 def main():
     print(predict[0])
 
