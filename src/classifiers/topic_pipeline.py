@@ -17,7 +17,7 @@ class TopicPipeline():
         home = str(Path.home())
         project_folder = r'\_parroty_workspace'
         output_folder = home + project_folder
-        pipeline_filename = output_folder + r'\parroty_pipeline.pickle'
+        pipeline_filename = Path(output_folder + r'\parroty_pipeline.pickle')
 
         #Load dataset
         #self.categories = ['alt.atheism','soc.religion.christian','comp.graphics', 'sci.med']
