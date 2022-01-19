@@ -25,8 +25,8 @@ def main():
     #print(tweet_data.df.data[0])#print(tweet_data.df.tail())
     for doc, category in zip(docs, predict):
         #pipeline.twenty_train.target_names[category]
-        analysis_data['tweet'].append(doc.copy())
-        analysis_data['category'].append(category.copy())
+        #analysis_data['tweet'].append(doc.copy())
+        #analysis_data['category'].append(category.copy())
         print('%r => %s' % (doc, pipeline.twenty_train.target_names[category]))
 print(analysis_data)        
 
