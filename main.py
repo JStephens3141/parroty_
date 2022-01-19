@@ -24,8 +24,8 @@ rows = [{'tweet': doc,
 #analysis_data = {'tweet':[docs], 'category':pipeline.twenty_train.target_names[category]}
 
 def main():
-  print('predict: ' + str(predict[0])
-  print('rows: ' + rows[0])
+  print('predict: ' + str(predict[0]))
+  print(rows[0])
 
     # TODO: The following dataframe needs to be fed into doc as a string of comma separated values in order to achieve large scale topic classification
     #print(tweet_data.df.data[0])#print(tweet_data.df.tail())
@@ -33,8 +33,7 @@ def main():
         #pipeline.twenty_train.target_names[category]
         #analysis_data['tweet'].append(doc.copy())
         #analysis_data['category'].append(category.copy())
-        #print('%r => %s' % (doc, pipeline.twenty_train.target_names[category]))
-  print(analysis_data)        
+        #print('%r => %s' % (doc, pipeline.twenty_train.target_names[category]))  
 
     # TODO: Stretch Goal - Ask twitter a question/Generate a 'generalized' response
     # TODO: Analyze Data - Sentiment, Topic
