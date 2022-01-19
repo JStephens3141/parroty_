@@ -25,8 +25,7 @@ rows = [{'tweet': doc,
 
 def main():
   print('predict: ' + str(predict[0])
-  for i in rows:
-    ''#print('rows: ' + i['tweet'])
+  print('rows: ' + rows[0])
 
     # TODO: The following dataframe needs to be fed into doc as a string of comma separated values in order to achieve large scale topic classification
     #print(tweet_data.df.data[0])#print(tweet_data.df.tail())
