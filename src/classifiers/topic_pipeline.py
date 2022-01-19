@@ -27,8 +27,8 @@ class TopicPipeline():
         #pipeline cache
         # TODO: add check/creation step for project_folder
         
-        if Path(pipeline_filename).is_file() and self.refresh_model == False:
-            with open(pipeline_filename, 'rb') as input:
+        if pipeline_filename.exists() and self.refresh_model == False:
+            with pipeline_filename.open('rb') as input:
                 self.text_clf = pickle.load(input)
             print('Pipeline Loaded!')
         else:
@@ -47,7 +47,7 @@ class TopicPipeline():
 
             self.text_clf.fit(self.twenty_train.data, self.twenty_train.target)
 
-            with open(pipeline_filename, 'wb') as output:
+            with pipeline_filename.open('wb') as output:
                 pickle.dump(self.text_clf, output)
             print('Pipeline Cached!')
 
