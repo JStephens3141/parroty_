@@ -24,7 +24,7 @@ rows = [{'tweet': doc,
 #analysis_data = {'tweet':[docs], 'category':pipeline.twenty_train.target_names[category]}
 
 def main():
-  print('predict: ' + predict[0])
+  print('predict: ' + str(predict[0])
   print(rows)
 
     # TODO: The following dataframe needs to be fed into doc as a string of comma separated values in order to achieve large scale topic classification
