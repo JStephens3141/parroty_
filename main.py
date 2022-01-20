@@ -3,13 +3,13 @@ A general purpose classifier pipeline to predict tweet sentiment by 'Topic'
 """
 
 
-from ast import And
 from src.datasources.twitter.tweets import TweetDump
 from src.datasources.twitter.twitter_handle_lookup import UserLookup
 from src.classifiers.topic_pipeline import TopicPipeline
 
 from pathlib import Path
 import csv
+
 
 force_analysis_creation = False
 
@@ -26,6 +26,7 @@ if analysis_csv.exists() and not force_analysis_creation:
 else:
   tweet_data = TweetDump()
   pipeline = TopicPipeline()
+  
   #docs is assembled in a for loop that iterates through
   #each tweet scraped and places just the tweet text into a list
   docs = []
@@ -33,6 +34,7 @@ else:
   #Code  can then be revised to docs = tweet_data.docs
   for tweet in tweet_data.df['data'][0]:
       docs.append(tweet['text'])
+
   predict = pipeline.text_clf.predict(docs)
 
   analysis_data = [{'tweet': doc,
