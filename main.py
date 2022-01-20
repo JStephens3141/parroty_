@@ -30,9 +30,10 @@ rows = [{'tweet': doc,
          'category': pipeline.twenty_train.target_names[category]
         } for doc, category in zip(docs, predict)]
 
-#if analysis_csv.exists():
+if analysis_csv.exists():
+  
 with analysis_csv.open('w') as _file:
-  csv_writer = csv.DictWriter(_file, fieldnames)
+  csv_writer = csv.DictWriter(_file, fieldnames, newline='')
   csv_writer.writeheader()
   csv_writer.writerows(rows)
 #analysis_data = {'tweet':[docs], 'category':pipeline.twenty_train.target_names[category]}
