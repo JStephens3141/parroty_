@@ -11,7 +11,7 @@ from src.classifiers.topic_pipeline import TopicPipeline
 from pathlib import Path
 import csv
 
-force_analysis_creation = True
+force_analysis_creation = False
 
 home = str(Path.home())
 project_folder = r'\_parroty_workspace'
