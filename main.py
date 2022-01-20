@@ -7,8 +7,17 @@ from src.datasources.twitter.tweets import TweetDump
 from src.datasources.twitter.twitter_handle_lookup import UserLookup
 from src.classifiers.topic_pipeline import TopicPipeline
 
+from pathlib import Path
+import csv
+
 tweet_data = TweetDump()#UserLookup()
 pipeline = TopicPipeline()
+
+
+home = str(Path.home())
+project_folder = r'\_parroty_workspace'
+output_folder = home + project_folder
+analysis_csv = Path(output_folder + r'\output.csv')
 
 #docs is assembled in a for loop that iterates through each tweet scraped and places just the tweet text into a list
 fieldnames = ['tweet', 'category']
@@ -21,6 +30,11 @@ rows = [{'tweet': doc,
          'category': pipeline.twenty_train.target_names[category]
         } for doc, category in zip(docs, predict)]
 
+#if analysis_csv.exists():
+with analysis_csv.open('w') as _file:
+  csv_writer = csv.DictWriter(_file, fieldnames)
+  csv_writer.writeheader()
+  csv_writer.writerows(rows)
 #analysis_data = {'tweet':[docs], 'category':pipeline.twenty_train.target_names[category]}
 
 def main():
