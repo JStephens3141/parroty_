@@ -19,7 +19,7 @@ output_folder = home + project_folder
 analysis_csv = Path(output_folder + r'\output.csv')
 
 if analysis_csv.exists() and not force_analysis_creation:
-  with analysis_csv.open('r', newline='') as _file:
+  with analysis_csv.open('r', newline='', encoding='utf-8') as _file:
     dict_reader = csv.DictReader(_file)
     analysis_data = [row for row in dict_reader]
   print('analysis loaded!')
