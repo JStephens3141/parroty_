@@ -7,6 +7,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def site_index():
-    app.logger.info('Testing info logger!!')
+    app.logger.warning('Testing info logger!!')
     main.main()
     return "<p>Welcome!!</p>"
